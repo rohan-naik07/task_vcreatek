@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme)=>({
         marginRight: theme.spacing(3),
     },
     sectionDesktop: {
-        display: 'none',
+        display: 'flex',
         [theme.breakpoints.up('md')]: {
           display: 'flex',
         },
@@ -95,9 +95,6 @@ export default function Navbar(){
                 </Toolbar>
             <main>
                 <Home/>
-                <Switch>
-                    <Route exact path='/' component={Home}/>
-                </Switch>    
             </main>
             <Footer/>
         </React.Fragment>

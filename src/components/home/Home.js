@@ -6,6 +6,12 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 
 const useStyles = makeStyles(theme=>({
+    root : {
+        //display : 'flex'
+        [theme.breakpoints.up('sm')]: {
+            display: 'flex'
+        }
+    },
     itemroot : {
         display:'flex',
         width : '100%',
@@ -38,6 +44,12 @@ const useStyles = makeStyles(theme=>({
     }
 }))
 
+/**
+ * 
+ * @param {If the parent is set to display:flex and child component being loaded does 
+ * not have flex:1 or flex-grow:1 then it will not take up 100% width of the parent.} props 
+ */
+
 const Home=props=>{
     const classes = useStyles();
     const [visible, setVisible] = useState(false);
@@ -69,11 +81,9 @@ const Home=props=>{
     ]
 
     return(
-        <div>
-            <Grid container>
+        <div className={classes.root}>
                 <Fade in={true} timeout={2000}>
-                    <Grid item xs={6}>
-                        <Paper elevation={2} style={{padding : 30,margin:20}}>
+                        <Paper elevation={2} style={{padding : 30,margin:20, height:'50vh',overflow:'auto'}}>
                             <Typography variant='caption'>
                                 The user can login into this portal if they have officially registered.
                             </Typography>
@@ -125,10 +135,8 @@ const Home=props=>{
                                 Login
                             </Button>
                         </Paper>
-                    </Grid>
                 </Fade>
                 <Fade in={true} timeout={2000}>
-                    <Grid item xs={6}>
                         <Paper elevation={1} style={{maxHeight:'100%',backgroundColor: 'transparent'}}>
                         <List fullWidth>
                             {items.map(item=>(
@@ -157,9 +165,7 @@ const Home=props=>{
                             ))}  
                             </List>
                         </Paper>
-                    </Grid>
-                </Fade>
-            </Grid>  
+                </Fade>  
         </div>
     )
 }
