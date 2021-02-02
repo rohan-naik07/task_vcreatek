@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link,Menu,MenuItem,Button} from '@material-ui/core';
+import {Link} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,8 @@ import {AccountCircle} from "@material-ui/icons";
 import PublicIcon from '@material-ui/icons/Public';
 import Home from "../home/Home";
 import Footer from '../footer/Footer'
+import {Switch, Route} from "react-router";
+
 
 const useStyles = makeStyles((theme)=>({
     appBar: {
@@ -92,7 +94,10 @@ export default function Navbar(){
                     </div> 
                 </Toolbar>
             <main>
-                <Home/>    
+                <Home/>
+                <Switch>
+                    <Route exact path='/' component={Home}/>
+                </Switch>    
             </main>
             <Footer/>
         </React.Fragment>
